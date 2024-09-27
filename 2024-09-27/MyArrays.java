@@ -9,4 +9,13 @@ public class MyArrays{
     }
     return ans + "]";
   }
+
+  public static int[] returnCopy(int[] ary){
+    int[] newArr = new int[ary.length];
+    for (int i =0; i < ary.length; i++){
+      newArr[i] = ary[i];
+    }
+    //check if same array
+    return newArr;
+  }
 }
