@@ -12,10 +12,22 @@ public class MyArrays{
 
   public static int[] returnCopy(int[] ary){
     int[] newArr = new int[ary.length];
-    for (int i =0; i < ary.length; i++){
+    for (int i = 0; i < ary.length; i++){
       newArr[i] = ary[i];
     }
-    //check if same array
     return newArr;
+  }
+
+  public static int[] concatArray(int[]ary1, int[]ary2){
+    int[] combinedArr = new int[ary1.length + ary2.length];
+    for (int i = 0; i < ary1.length + ary2.length; i++){
+      if (i < ary1.length){
+        combinedArr[i] = ary1[i];
+      }
+      if (i >= ary1.length){
+        combinedArr[i] = ary2[i - ary1.length];
+      }
+    }
+    return combinedArr;
   }
 }
