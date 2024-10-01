@@ -9,15 +9,21 @@
 public class ArrayMethods{
   public static void main(String[] args) {
     int[] arr1D = new int[] {3,6,9,10};
-    int[][] arr2D = new int[][] {{3,5,6,7},{3,3,2},{5,4},{4}};
     System.out.println(arrToString(arr1D));
     //ragged array
+    int[][] arr2D = new int[][] {{3,5,6,7},{3,3,2},{5,4},{4}};  
     System.out.println(arrToString(arr2D));
     System.out.println(arr2DSum(arr2D));
     System.out.println(arrToString(swapRC(new int[][]{{1,2,3},{4,5,6}}))); // should return {{1,4},{2,5},{3,6}}
 
     arr2D = new int[][] {{3,5,6,7},{3,3,2,9},{5,2,1,4},{4, 10, 4, 7}};
     System.out.println(arrToString(swapRC(arr2D)));
+    System.out.println(arrToString(arr2D));
+    System.out.println(arr2DSum(arr2D));
+
+
+    arr2D = new int[][] {{}, {}};
+    //System.out.println(arrToString(swapRC(arr2D)));
     System.out.println(arrToString(arr2D));
     System.out.println(arr2DSum(arr2D));
 
