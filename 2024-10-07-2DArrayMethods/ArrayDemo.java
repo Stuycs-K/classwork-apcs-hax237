@@ -5,20 +5,35 @@ public class ArrayDemo{
     //You can now use Arrays.toString(yourArray) instead of writing arrayToString again.
     //Compare Arrays.toString(yourArray) to YOUR arrayToString() method to make sure yours is correct
     //do not use any other Arrays.method()
-
   }
 
   //0. Include your prior methods to help you print a 1D/2D array of ints.
   public static String arrToString(int[]ary){
-    return "";
+    String ans = "[";
+    for (int i = 0; i < ary.length; i++){
+      ans = ans + ary[i];
+      if (i != ary.length - 1){
+        ans += ", ";
+      }
+    }
+    return ans + "]";
   }
 
   //The name of different methods can be the same,
   //as long as the parameters are different! (type and/or quantity must be different)
   //Pro tip: you should be using your 1D arrToString in this method!
   public static String arrToString(int[][]ary){
-    return "";
+    //this should use arrToString(int[])
+    String newArray = "[";
+    for (int i = 0; i < ary.length; i++){
+      newArray += arrToString(ary[i]);
+      if (i < ary.length - 1){
+        newArray += ", ";
+      }
+    }
+    return newArray + "]";
   }
+
 
   //1. Calculate and return how many elements equal zero in the 2D array.
   public static int countZeros2D(int[][] nums){
@@ -29,7 +44,13 @@ public class ArrayDemo{
   /*Return the sum of all of the values in the 2D array
    *Use a nested loop instead of a helper method*/
   public static int arr2DSum(int[][]nums){
-    return 0;
+    int sum = 0;
+    for (int i = 0 ; i < nums.length; i++){
+      for (int x = 0; x < nums[i].length; x++){
+        sum += nums[i][x];
+      }
+    }
+    return sum;//place holder return value so it compiles.
   }
 
   //3. Modify a given 2D array of integer as follows:
@@ -38,7 +59,19 @@ public class ArrayDemo{
   //that negative with the value 1
   //-All other negatives replace with 0
   public static void replaceNegative(int[][] vals){
-
+    for (int i = 0; i < vals.length; i++){
+      for (int x = 0; x< vals[i].length; x++){
+        if (vals[i][x] < 0){
+          if (i == x){
+            vals[i][x] = 1;
+          }
+          else{
+            vals[i][x] = 0;
+          }
+        }
+      }
+    }
+    System.out.println(arrToString(vals));
   }
 
   //4. Make a copy of the given 2d array.
@@ -46,15 +79,34 @@ public class ArrayDemo{
   //DO NOT use any built in methods that "copy" an array.
   //You SHOULD write a helper method for this.
   //If you don't see a good way to do that, you should stop and look at prior methods.
+  //HELPER FUCNTION
+  public static int[] returnCopy(int[] ary){
+    int[] newRow = new int[ary.length];
+    for (int c = 0; c < ary.length; c++){
+      newRow[c] = ary[c];
+    }
+    return newRow;
+  }
+
   public static int[][] copy(int[][] nums){
-    return new int[1][1];
+    int[][] newArr = new int[nums.length][];
+    for (int i = 0; i < nums.length; i++){
+      newArr[i] = returnCopy(nums[i]);
+    }
+    return newArr;//placeholder so it compiles
   }
 
   //5. Rotate an array by returning a new array with the rows and columns swapped.
   //   You may assume the array is rectangular and neither rows nor cols is 0.
   //   e.g. swapRC({{1,2,3},{4,5,6}}) returns {{1,4},{2,5},{3,6}}
   public static int[][] swapRC(int[][]nums){
-    return new int[1][1];
+    int[][] arr = new int[nums[0].length][nums.length];
+    for (int i = 0; i < nums.length; i++){
+      for (int x = 0; x < nums[0].length; x++){
+        arr[x][i] = nums[i][x];
+      }
+    }
+    return arr;
   }
 
   //6. Make an HTML table by putting a table tag around the entire 2d array,
