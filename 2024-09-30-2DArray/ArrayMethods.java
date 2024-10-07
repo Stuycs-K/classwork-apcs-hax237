@@ -20,12 +20,15 @@ public class ArrayMethods{
     System.out.println(arrToString(swapRC(arr2D))); // should return {{1,4},{2,5},{3,6}}
     System.out.println(arrToString(arr2D));
     System.out.println(arr2DSum(arr2D));
+    replaceNegative(new int[][]{{1,-4},{2,-5},{-3,6}});
 
     //square array
     arr2D = new int[][] {{3,5,6,7},{3,3,2,9},{5,2,1,4},{4, 10, 4, 7}};
     System.out.println(arrToString(swapRC(arr2D)));
     System.out.println(arrToString(arr2D));
     System.out.println(arr2DSum(arr2D));
+    replaceNegative(new int[][]{{-1,-4},{2,-9}});
+    System.out.print(arrToString(copy(arr2D)));
 
     //empty array
     arr2D = new int[][] {{}, {}};
@@ -92,21 +95,46 @@ public class ArrayMethods{
       return arr;
     }
 
-    //3. Modify a given 2D array of integer as follows:
-    //Replace all the negative values:
-    //-When the row number is the same as the column number replace
-    //that negative with the value 1
-    //-All other negatives replace with 0
-    public static void replaceNegative(int[][] vals){ }
-
-    //4. Make a copy of the given 2d array.
-    //When testing : make sure that changing the original does NOT change the copy.
-    //DO NOT use any built in methods that "copy" an array.
-    //You SHOULD write a helper method for this.
-    //If you don't see a good way to do that, you should stop and look at prior methods.
-    public static int[][] copy(int[][] nums){
-      return null;//placeholder so it compiles
+//3. Modify a given 2D array of integer as follows:
+//Replace all the negative values:
+//-When the row number is the same as the column number replace
+//that negative with the value 1
+//-All other negatives replace with 0
+public static void replaceNegative(int[][] vals){
+  for (int i = 0; i < vals.length; i++){
+    for (int x = 0; x< vals[i].length; x++){
+      if (vals[i][x] < 0){
+        if (i == x){
+          vals[i][x] = 1;
+        }
+        else{
+          vals[i][x] = 0;
+        }
+      }
     }
+  }
+  System.out.println(arrToString(vals));
+}
+    //4. Make a copy of the given 2d array.
+//When testing : make sure that changing the original does NOT change the copy.
+//DO NOT use any built in methods that "copy" an array.
+//You SHOULD write a helper method for this.
+//If you don't see a good way to do that, you should stop and look at prior methods.
 
+//HELPER FUCNTION
+public static int[] returnCopy(int[] ary){
+  int[] newRow = new int[ary.length];
+  for (int c = 0; c < ary.length; c++){
+    newRow[c] = ary[c];
+  }
+  return newRow;
+}
 
+public static int[][] copy(int[][] nums){
+  int[][] newArr = new int[nums.length][];
+  for (int i = 0; i < nums.length; i++){
+    newArr[i] = returnCopy(nums[i]);
+  }
+  return newArr;//placeholder so it compiles
+}
 }
