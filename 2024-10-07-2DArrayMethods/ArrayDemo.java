@@ -5,6 +5,14 @@ public class ArrayDemo{
     //You can now use Arrays.toString(yourArray) instead of writing arrayToString again.
     //Compare Arrays.toString(yourArray) to YOUR arrayToString() method to make sure yours is correct
     //do not use any other Arrays.method()
+
+    int[] arr1D = new int[] {3,6,9,10};
+    int[][] arr2D = new int[][] {{3,5,6,7},{3,3,2},{5,4},{4}};
+    //compare java's toString with my arrToString
+    System.out.println("Built-in toString method: " + Arrays.toString(arr1D));
+    System.out.println("My arrToString: " + arrToString(arr1D));
+    System.out.println("Built-in toString method: " + Arrays.deepToString(arr2D));
+    System.out.println("My arrToString: " + arrToString(arr2D));
   }
 
   //0. Include your prior methods to help you print a 1D/2D array of ints.
