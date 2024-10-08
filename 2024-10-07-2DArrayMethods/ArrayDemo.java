@@ -7,12 +7,34 @@ public class ArrayDemo{
     //do not use any other Arrays.method()
 
     int[] arr1D = new int[] {3,6,9,10};
-    int[][] arr2D = new int[][] {{3,5,6,7},{3,3,2},{5,4},{4}};
+    int[][] arr2D = new int[][] {{3,0,6,7},{3,0,2},{5,4},{4}};
     //compare java's toString with my arrToString
     System.out.println("Built-in toString method: " + Arrays.toString(arr1D));
     System.out.println("My arrToString: " + arrToString(arr1D));
     System.out.println("Built-in toString method: " + Arrays.deepToString(arr2D));
     System.out.println("My arrToString: " + arrToString(arr2D));
+
+    System.out.println("");
+
+    //Jagged Arrays
+    System.out.println(countZeros2D(arr2D)); // 2
+    System.out.println(htmlTable(new int[][]{{1,2},{3}}).equals("<table><tr><td>1</td><td>2</td></tr><tr><td>3</td></tr></table>")); //<table><tr><td>1</td><td>2</td></tr><tr><td>3</td></tr></table>
+
+    //Square arrays
+    arr2D = new int[][] {{-2, 0},{0, 4}};
+    System.out.println(countZeros2D(arr2D)); // 2
+    System.out.println(htmlTable(arr2D).equals("<table><tr><td>-2</td><td>0</td></tr><tr><td>0</td><td>4</td></tr></table>")); // <table><tr><td>-2</td><td>0</td></tr><tr><td>0</td><td>4</td></tr></table>
+
+    //Rectangular arrays
+    arr2D = new int[][] {{0},{22}};
+    System.out.println(countZeros2D(arr2D)); // 1
+    System.out.println(htmlTable(arr2D).equals("<table><tr><td>0</td></tr><tr><td>22</td></tr></table>")); // <table><tr><td>0</td></tr><tr><td>1</td></tr><tr><td>22</td><tr></table>
+
+    //Empty arrays
+    arr2D = new int[][] {{},{},{},{}};
+    System.out.println(countZeros2D(arr2D)); // 0
+    System.out.println(htmlTable(arr2D)); // 
+
   }
 
   //0. Include your prior methods to help you print a 1D/2D array of ints.
@@ -45,7 +67,15 @@ public class ArrayDemo{
 
   //1. Calculate and return how many elements equal zero in the 2D array.
   public static int countZeros2D(int[][] nums){
-    return 0;
+    int zero_count = 0;
+    for (int r = 0; r < nums.length; r++){
+      for (int c = 0; c < nums[r].length; c++){
+        if (nums[r][c] == 0){
+          zero_count++;
+        }
+      }
+    }
+    return zero_count;
   }
 
   //2. Calculate the sum of a 2d array
@@ -101,7 +131,7 @@ public class ArrayDemo{
     for (int i = 0; i < nums.length; i++){
       newArr[i] = returnCopy(nums[i]);
     }
-    return newArr;//placeholder so it compiles
+    return newArr;
   }
 
   //5. Rotate an array by returning a new array with the rows and columns swapped.
@@ -124,6 +154,14 @@ public class ArrayDemo{
   //   e.g. htmlTable(new int[][]{{1,2},{3}})  returns:
   // "<table><tr><td>1</td><td>2</td></tr><tr><td>3</td></tr></table>"
   public static String htmlTable(int[][]nums){
-    return "";
+    String result = "<table>";
+    for (int r = 0; r < nums.length; r++){
+      result += "<tr>";
+      for (int c = 0; c < nums[r].length; c++){
+        result += "<td>" + String.valueOf(nums[r][c]) + "</td>";
+      }
+      result+= "</tr>";
+    }
+    return result + "</table>";
   }
 }
