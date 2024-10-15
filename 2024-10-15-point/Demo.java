@@ -15,7 +15,11 @@ public class Demo{
     System.out.println( p3);
     //cases for Point calling a point
     Point p4 = new Point(p1);
+    Point p5 = new Point(p2);
+    Point p6 = new Point(p3);
     System.out.println("is p4 equal to p1 " + p1.toString().equals(p4.toString())+ " different addresses? " + !(p1 == p4));
+    System.out.println("is p5 equal to p2 " + p2.toString().equals(p5.toString())+ " different addresses? " + !(p2 == p5));
+    System.out.println("is p6 equal to p3 " + p3.toString().equals(p6.toString())+ " different addresses? " + !(p3 == p6));
     System.out.println( distance(p1,p2));
     System.out.println( Point.distance(p1,p2));
     System.out.println( p1.distanceTo(p2));
