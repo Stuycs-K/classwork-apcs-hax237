@@ -21,8 +21,12 @@ public class Demo{
     System.out.println("is p5 equal to p2 " + p2.toString().equals(p5.toString())+ " different addresses? " + !(p2 == p5));
     System.out.println("is p6 equal to p3 " + p3.toString().equals(p6.toString())+ " different addresses? " + !(p3 == p6));
 
-    System.out.println( distance(p1,p2));
+    System.out.println( distance(p1,p2));//expect roughly 2.828
     System.out.println( Point.distance(p1,p2));
     System.out.println( p1.distanceTo(p2));
+    
+    System.out.println( distance(p1,p3)); //expect roughly 3.6055
+    System.out.println( Point.distance(p1,p3));
+    System.out.println( p1.distanceTo(p3));
   }
 }
