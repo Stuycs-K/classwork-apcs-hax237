@@ -5,7 +5,7 @@ public class Demo{
   to the others.
   */
   public static double distance(Point a, Point b){
-    return 0.0;
+    return Math.sqrt(Math.pow((a.getX() - b.getX()), 2) + Math.pow((a.getY() - b.getY()), 2));
   }
 
   public static void main(String[]args){
@@ -20,6 +20,7 @@ public class Demo{
     System.out.println("is p4 equal to p1 " + p1.toString().equals(p4.toString())+ " different addresses? " + !(p1 == p4));
     System.out.println("is p5 equal to p2 " + p2.toString().equals(p5.toString())+ " different addresses? " + !(p2 == p5));
     System.out.println("is p6 equal to p3 " + p3.toString().equals(p6.toString())+ " different addresses? " + !(p3 == p6));
+
     System.out.println( distance(p1,p2));
     System.out.println( Point.distance(p1,p2));
     System.out.println( p1.distanceTo(p2));
