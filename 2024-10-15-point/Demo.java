@@ -34,5 +34,10 @@ public class Demo{
     Point triangleP1 = new Point(-0.5, 0);
     Point triangleP2 = new Point(0.5, 0);
     Point triangleP3 = new Point(0, Math.sqrt(0.75));
+    
+    //Expecting all ones
+    System.out.println( distance(triangleP1,triangleP2));
+    System.out.println( distance(triangleP2,triangleP3)); //0.999999999
+    System.out.println( distance(triangleP1,triangleP3)); //0.999999999
   }
 }
