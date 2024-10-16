@@ -13,6 +13,7 @@ public class Demo{
     Point p2 = new Point(-1,-1);
     Point p3 = new Point(3,4);
     System.out.println( p3);
+
     //cases for Point calling a point
     Point p4 = new Point(p1);
     Point p5 = new Point(p2);
@@ -28,5 +29,10 @@ public class Demo{
     System.out.println( distance(p1,p3)); //expect roughly 3.6055
     System.out.println( Point.distance(p1,p3));
     System.out.println( p1.distanceTo(p3));
+
+    //Equilateral Triangle
+    Point triangleP1 = new Point(-0.5, 0);
+    Point triangleP2 = new Point(0.5, 0);
+    Point triangleP3 = new Point(0, Math.sqrt(0.75));
   }
 }
