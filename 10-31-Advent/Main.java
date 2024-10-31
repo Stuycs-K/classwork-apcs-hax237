@@ -18,15 +18,18 @@ public class Main {
       }
       System.out.println(text);
 
-      int sum = 0;
-      while(input.hasNextInt()){
-        sum+=input.nextInt();//read all the numbers and add to sum
-      }
-      System.out.println(sum);
 
       Scanner sc1 = new Scanner("This is a bunch of words");
       while(sc1.hasNext()){
         System.out.println(sc1.next());
       }
+
+      Double sum = 0.0;
+      Scanner sc2 = new Scanner("10.0 1.04 99.0 -3.0 4.2");
+      while (sc2.hasNextDouble()){
+        sum+=sc2.nextDouble();
+      }
+      System.out.println(sum);
+
     }
   }
