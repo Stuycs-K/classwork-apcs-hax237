@@ -32,5 +32,6 @@ public class Main {
       System.out.println(sum);
 
 
-      TriangleTester.countTrianglesA("inputTri.txt");    }
+      TriangleTester.countTrianglesA("inputTri.txt");    
+    }
   }

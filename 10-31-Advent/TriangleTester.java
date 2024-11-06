@@ -27,6 +27,10 @@ public class TriangleTester{
       System.out.println("File not found");
       return -1; 
     }
-
   }
+
+  public static void main(String[] args){
+    countTrianglesA("inputTri.txt");    
+  }
+  
 }
