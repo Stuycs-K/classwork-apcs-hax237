@@ -17,10 +17,9 @@ public class ReadFile{
           input.nextLine();
         }
       }*/
-
       while(input.hasNextLine()){
         String line = input.nextLine();
-        if ((input.nextLine().indexOf("{")) != -1){
+        if ((line.indexOf("{")) != -1){
           System.out.println(line);
         }
       }
