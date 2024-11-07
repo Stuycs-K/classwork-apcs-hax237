@@ -40,14 +40,12 @@ public class TriangleTester{
       ArrayList<Integer> col2 = new ArrayList<>();
       ArrayList<Integer> col3 = new ArrayList<>();
 
-      // Only one while loop needed to read each set of three values into respective columns
       while (lengths.hasNextInt()) {
         col1.add(lengths.nextInt());
         col2.add(lengths.nextInt());
         col3.add(lengths.nextInt());
       }
 
-      // Check triangles in column 1
       for (int i = 0; i < col1.size() - 2; i += 3) {
         int a = col1.get(i);
         int b = col1.get(i + 1);
@@ -57,7 +55,6 @@ public class TriangleTester{
         }
       }
 
-      // Check triangles in column 2
       for (int i = 0; i < col2.size() - 2; i += 3) {
         int a = col2.get(i);
         int b = col2.get(i + 1);
@@ -67,7 +64,6 @@ public class TriangleTester{
         }
       }
 
-      // Check triangles in column 3
       for (int i = 0; i < col3.size() - 2; i += 3) {
         int a = col3.get(i);
         int b = col3.get(i + 1);
@@ -87,8 +83,8 @@ public class TriangleTester{
   }
 
   public static void main(String[] args){
-    //System.out.println(countTrianglesA("inputTri.txt"));  
-    System.out.println(countTrianglesB("inputTri.txt"));      
+    System.out.println(countTrianglesA("inputTri.txt"));  
+    //System.out.println(countTrianglesB("inputTri.txt"));      
   }
   
 }
