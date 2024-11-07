@@ -1,6 +1,10 @@
 //Step 8 answer
 //calling getName from a bird object uses the overridden method of getName method. 
 //However, calling getName from a Animal object uses the original getName method. 
+//Step 10 answer
+//The instance assigning the parent class Animal to a variable of the child class Bird doesn't work
+//because this implies that Animal-is-a-Bird, or that Animal is a subclass of Bird, which is not true
+
 
 public class Driver{
   public static void main(String[] args){
