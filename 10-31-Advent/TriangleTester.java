@@ -6,7 +6,7 @@ public class TriangleTester{
   public static int countTrianglesA(String filename){
     int count = 0;
     try{
-      File file = new File ("filename");
+      File file = new File (filename);
       Scanner lengths = new Scanner(file);
 
       while(lengths.hasNextLine()){
@@ -30,7 +30,7 @@ public class TriangleTester{
   }
 
   public static void main(String[] args){
-    countTrianglesA("inputTri.txt");    
+    System.out.println(countTrianglesA("inputTri.txt"));    
   }
   
 }
