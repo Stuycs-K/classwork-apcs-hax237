@@ -5,7 +5,6 @@
 //The instance assigning the parent class Animal to a variable of the child class Bird doesn't work
 //because this implies that Animal-is-a-Bird, or that Animal is a subclass of Bird, which is not true
 
-
 public class Driver{
   public static void main(String[] args){
       Animal a = new Animal("buzz",5,"bee");
