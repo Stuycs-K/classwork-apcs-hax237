@@ -26,7 +26,7 @@ public class TriangleTester{
       return count;
     }catch(FileNotFoundException ex){
       System.out.println("File not found");
-      return -1; 
+      return -1;
     }
   }
 
@@ -46,7 +46,7 @@ public class TriangleTester{
         col3.add(lengths.nextInt());
       }
 
-      for (int i = 0; i < col1.size() - 2; i += 3) {
+      for (int i = 0; i < col1.size(); i += 3) {
         int a = col1.get(i);
         int b = col1.get(i + 1);
         int c = col1.get(i + 2);
@@ -74,17 +74,20 @@ public class TriangleTester{
       }
 
       lengths.close();
+      System.out.println(col1);
+      System.out.println(col2);
+      System.out.println(col3);
       return count;
     }catch(FileNotFoundException ex){
       System.out.println("File not found");
-      return -1; 
+      return -1;
     }
 
   }
 
   public static void main(String[] args){
-    System.out.println(countTrianglesA("inputTri.txt"));  
-    //System.out.println(countTrianglesB("inputTri.txt"));      
+    System.out.println(countTrianglesB("inputTri.txt"));
+    //System.out.println(countTrianglesB("inputTri.txt"));
   }
-  
+
 }
