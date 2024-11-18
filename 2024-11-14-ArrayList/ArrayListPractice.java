@@ -74,5 +74,20 @@ public class ArrayListPractice {
     replaceEmpty(ar2);
     System.out.println(ar2);
     System.out.println(makeReversedList(ar2));
+
+    System.out.println("");
+
+    ArrayList<String> first = createRandomArray(7);
+    ArrayList<String> second = createRandomArray(10);
+    System.out.println(first);
+    System.out.println(second);
+    System.out.println(mixLists(first, second));
+
+    ArrayList<String> ar3 = createRandomArray(10000);
+    System.out.println(ar3);
+    System.out.println(mixLists(ar2, ar3));
+
+    ArrayList<String> third = createRandomArray(10);
+    System.out.println(mixLists(second, third));
   }
 }
