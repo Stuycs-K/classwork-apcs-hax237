@@ -30,12 +30,13 @@ public class ArrayListPractice {
     return result;
   }
 
-  /* 
+  
   public static ArrayList<String> mixLists( ArrayList<String> a,  ArrayList<String> b){
   //return a new ArrayList that has all values of a and b in alternating order that is:
   //a[0], b[0], a[1], b[1]...
   //If one list is longer than the other, just attach the remaining values to the end.
-  ArrayList<String? combo = new ArrayList<String> (a.size() + b.size());
+  ArrayList<String> combo = new ArrayList<String> (a.size() + b.size());
+
   int min = Math.min(a.size(), b.size());
   int max = Math.max(a.size(), b.size());
   int i = 0;
@@ -44,11 +45,20 @@ public class ArrayListPractice {
     combo.add(b.get(i));
     i++;
   }
-  for (i; i < max; i++) {
-    combo.add()
+  if (a.size() > b.size()){
+    for (; i < max; i++){
+      combo.add(a.get(i));
+    }
   }
+  if (a.size() < b.size()){
+    for (; i < max; i++){
+      combo.add(b.get(i));
+    }
   }
-  */
+  return combo;
+
+  }
+  
 
   public static void main(String[] args) {
     System.out.println(createRandomArray(5));
