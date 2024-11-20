@@ -29,12 +29,14 @@ public class adventOfCode1{
       Scanner input = new Scanner(file);
       int i = 0, x = 0, y = 0;
 
-      while(input.hasNextLine()){
-        String[] text = input.nextLine().split(",");
-        System.out.println(Arrays.toString(text));
-        String dir = text[i];
-        System.out.println(dir);
-        int blocks = Integer.valueOf(dir.substring(1));
+      while(input.hasNext()){
+        String[] text = input.next().split(",");
+        //System.out.println(Arrays.toString(text));
+        String dir = text[0].substring(0, 1);
+        //System.out.println(dir);
+        int blocks = Integer.valueOf(text[0].substring(1));
+        //System.out.println(blocks);
+
         if (i % 2 == 0 && dir.equals("R")){
           System.out.println("This adds " + blocks + " to x");
           x += blocks;
@@ -55,8 +57,9 @@ public class adventOfCode1{
       }
       
       input.close();
-      System.out.println(file);
-      return x + y;
+      System.out.println(x);
+      System.out.println(y);
+      return Math.abs(x) + Math.abs(y);
 
     }catch(FileNotFoundException e){
       System.out.println("File not found");
