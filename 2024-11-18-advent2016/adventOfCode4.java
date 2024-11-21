@@ -17,6 +17,7 @@ public class adventOfCode4{
             while (input.hasNextLine()){
                 String[] data = input.nextLine().split("-");
                 System.out.println(Arrays.toString(data));
+                System.out.println("");
                 String sectorCheck = data[data.length - 1];
                 int sectorID = Integer.valueOf(sectorCheck.substring(0, 3));
                 String checksum = sectorCheck.substring(4, 9);
@@ -42,10 +43,6 @@ public class adventOfCode4{
                         }
                     }
                 }
-                //compare checksum with values in arraylists
-                //for each value in checksum, look through counts to see if its the greatest
-                //if it is, remove both letter and count of value from arraylists 
-                //continue with next value in checksum
                 sort(Letters, count);
             }
 
@@ -58,9 +55,10 @@ public class adventOfCode4{
     }
 
     public static ArrayList<String> sort(ArrayList<String> letters, ArrayList<Integer> count){
-        System.out.println(count);
-        System.out.println(letters);
+        //System.out.println(count);
+        //System.out.println(letters);
 
+        //ORGANIZE FROM MAX TO MIN
         for (int iter = count.size() - 1; iter >= 0; iter--){
             int greatest = 1;
             int grIndex = 0;
@@ -70,16 +68,33 @@ public class adventOfCode4{
                     grIndex = i;
                 }
             }
-            System.out.println("the greatest number: "+ greatest);
-            System.out.println("index of the greatest number: "+grIndex);
+            //System.out.println("the greatest number: "+ greatest);
+            //System.out.println("index of the greatest number: "+grIndex);
             count.add(greatest);
             letters.add(letters.get(grIndex));
             count.remove(grIndex);
             letters.remove(grIndex);
 
-        System.out.println(count);
-        System.out.println(letters);
+        //System.out.println(count);
+        //System.out.println(letters);
         }
+
+        //REORGANIZES ACCORDING TO ASCII VALUES
+        //SMALLER VALS (earlier in alph) come first
+        for(int iter = 0; iter <= letters.size(); iter++){
+            for (int i = 0; i < letters.size() -1; i++){
+                if (count.get(i) == count.get(i + 1)){
+                    if (letters.get(i).compareTo(letters.get(i+1)) > 0){
+                        //System.out.println(letters.get(i + 1) + " comes before " + letters.get(i));
+                        String original = letters.set(i, letters.get(i+1));
+                        letters.set(i + 1, original);
+                        //System.out.println(letters);
+                    }
+                }
+            }
+        }
+        //System.out.println(count);
+        //System.out.println(letters);
         return letters;
     }
 
