@@ -16,14 +16,14 @@ public class adventOfCode4{
 
             while (input.hasNextLine()){
                 String[] data = input.nextLine().split("-");
-                //System.out.println(Arrays.toString(data));
+                System.out.println(Arrays.toString(data));
                 String sectorCheck = data[data.length - 1];
                 int sectorID = Integer.valueOf(sectorCheck.substring(0, 3));
                 String checksum = sectorCheck.substring(4, 9);
                 //System.out.println(sectorID);
                 //System.out.println(checksum);
 
-                ArrayList<String> Letter = new ArrayList<String>();
+                ArrayList<String> Letters = new ArrayList<String>();
                 ArrayList<Integer> count = new ArrayList<Integer>();
 
                 //fillinh in arraylists
@@ -31,9 +31,9 @@ public class adventOfCode4{
                     String text = data[str];
                     for(int i = 0; i < text.length(); i++){
                         String letter = text.substring(i, i + 1);
-                        int index = Letter.indexOf(letter);
+                        int index = Letters.indexOf(letter);
                         if (index == -1){
-                            Letter.add(letter);
+                            Letters.add(letter);
                             count.add(1);
                         }
                         else{
@@ -46,11 +46,7 @@ public class adventOfCode4{
                 //for each value in checksum, look through counts to see if its the greatest
                 //if it is, remove both letter and count of value from arraylists 
                 //continue with next value in checksum
-                for (int i = 0; i < 5; i++){
-                    int greatestIndex = 0;
-                }
-                System.out.println(Letter);
-                System.out.println(count);
+                sort(Letters, count);
             }
 
             input.close();
@@ -59,6 +55,32 @@ public class adventOfCode4{
             System.out.println("File not found");
             return -100;
         }
+    }
+
+    public static ArrayList<String> sort(ArrayList<String> letters, ArrayList<Integer> count){
+        System.out.println(count);
+        System.out.println(letters);
+
+        for (int iter = count.size() - 1; iter >= 0; iter--){
+            int greatest = 1;
+            int grIndex = 0;
+            for (int i = 0; i < iter; i++){
+                if (greatest < count.get(i)){
+                    greatest = count.get(i);
+                    grIndex = i;
+                }
+            }
+            System.out.println("the greatest number: "+ greatest);
+            System.out.println("index of the greatest number: "+grIndex);
+            count.add(greatest);
+            letters.add(letters.get(grIndex));
+            count.remove(grIndex);
+            letters.remove(grIndex);
+
+        System.out.println(count);
+        System.out.println(letters);
+        }
+        return letters;
     }
 
     public static void main(String[] args) {

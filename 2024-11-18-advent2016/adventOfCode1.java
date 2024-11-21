@@ -31,7 +31,7 @@ public class adventOfCode1{
 
       while(input.hasNext()){
         String[] text = input.next().split(",");
-        //System.out.println(Arrays.toString(text));
+        System.out.println(Arrays.toString(text));
         String dir = text[0].substring(0, 1);
         //System.out.println(dir);
         int blocks = Integer.valueOf(text[0].substring(1));
@@ -53,6 +53,8 @@ public class adventOfCode1{
           System.out.println("This adds " + blocks + " to y");
           y += blocks;
         }
+        System.out.println("x: "+x);
+        System.out.println("y: "+ y);
         i++;
       }
       
