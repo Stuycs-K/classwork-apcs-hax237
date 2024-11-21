@@ -17,7 +17,6 @@ public class adventOfCode4{
             while (input.hasNextLine()){
                 String[] data = input.nextLine().split("-");
                 System.out.println(Arrays.toString(data));
-                System.out.println("");
                 String sectorCheck = data[data.length - 1];
                 int sectorID = Integer.valueOf(sectorCheck.substring(0, 3));
                 String checksum = sectorCheck.substring(4, 9);
@@ -43,10 +42,25 @@ public class adventOfCode4{
                         }
                     }
                 }
-                sort(Letters, count);
+                System.out.println(sort(Letters, count));
+                String correctChecksum = "";
+
+                //get correct checksum
+                for (int i = 0; i < 5; i ++){
+                    correctChecksum += Letters.get(i);
+                }
+                System.out.println(correctChecksum);
+                System.out.println(checksum);
+
+                if(checksum.equals(correctChecksum)){
+                    System.out.println("REAL ROOM!");
+                    sum+= sectorID;
+                }
+                
             }
 
             input.close();
+            System.out.println(sum);
             return sum;
         }catch(FileNotFoundException e){
             System.out.println("File not found");
