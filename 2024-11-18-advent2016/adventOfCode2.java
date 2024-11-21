@@ -7,7 +7,7 @@ public class adventOfCode2{
   public static void parse(){
     try{
       File file = new File("brCodeDirs.txt");
-    Scanner input = new Scanner(file);
+      Scanner input = new Scanner(file);
 
       while(input.hasNextLine()){
         String longg = input.nextLine();
@@ -22,7 +22,7 @@ public class adventOfCode2{
 
   public static String bathroomCode(String filename){
     try{
-      File file = new File("brCodeDirs.txt");
+      File file = new File(filename);
       Scanner input = new Scanner(file);
       int[][] keypad = new int[][] {
           {1, 2, 3},
@@ -38,10 +38,10 @@ public class adventOfCode2{
       while(input.hasNextLine()){
         //each line
         String line = input.nextLine();
-        System.out.println(line);
-        System.out.println("number from last line " + num);
-        System.out.println("row: "+ row);
-        System.out.println("column " + column);
+        //System.out.println(line);
+        //System.out.println("number from last line " + num);
+        //System.out.println("row: "+ row);
+        //System.out.println("column " + column);
 
         //each letter in the line
         for(int i = 0; i < line.length(); i++){
