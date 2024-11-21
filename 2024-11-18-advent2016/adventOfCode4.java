@@ -42,18 +42,25 @@ public class adventOfCode4{
                         }
                     }
                 }
+                System.out.println(Letters);
+                System.out.println(count);
+
                 System.out.println(sort(Letters, count));
+
                 String correctChecksum = "";
 
                 //get correct checksum
                 for (int i = 0; i < 5; i ++){
                     correctChecksum += Letters.get(i);
                 }
+                System.out.println("after sorting by alphabet");
+                System.out.println(Letters);
+                System.out.println(count);
                 System.out.println(correctChecksum);
                 System.out.println(checksum);
 
                 if(checksum.equals(correctChecksum)){
-                    System.out.println("REAL ROOM!");
+                    System.out.println("REAL ROOM!" + "\n");
                     sum+= sectorID;
                 }
                 
@@ -73,10 +80,10 @@ public class adventOfCode4{
         //System.out.println(letters);
 
         //ORGANIZE FROM MAX TO MIN
-        for (int iter = count.size() - 1; iter >= 0; iter--){
-            int greatest = 1;
+        for (int iter = count.size(); iter > 0; iter--){
+            int greatest = count.get(0);
             int grIndex = 0;
-            for (int i = 0; i < iter; i++){
+            for (int i = 1; i < iter; i++){
                 if (greatest < count.get(i)){
                     greatest = count.get(i);
                     grIndex = i;
@@ -88,10 +95,12 @@ public class adventOfCode4{
             letters.add(letters.get(grIndex));
             count.remove(grIndex);
             letters.remove(grIndex);
-
-        //System.out.println(count);
-        //System.out.println(letters);
+            System.out.println(count);
+            System.out.println(letters);
         }
+        System.out.println("after sorting by count");
+        System.out.println(count);
+        System.out.println(letters);
 
         //REORGANIZES ACCORDING TO ASCII VALUES
         //SMALLER VALS (earlier in alph) come first
@@ -113,6 +122,21 @@ public class adventOfCode4{
     }
 
     public static void main(String[] args) {
+        /*
+[shoewudys, rkddo, qdqboiyi, 530[doiqs]]
+[s, h, o, e, w, u, d, y, r, k, q, b, i]
+[2, 1, 3, 1, 1, 1, 4, 2, 1, 1, 2, 1, 2]
+after sorting by count
+[4, 3, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1]
+[d, o, s, y, q, h, e, w, u, r, k, b, i]
+[d, o, q, s, y, b, e, h, i, k, r, u, w]
+after sorting by alphabet
+[d, o, q, s, y, b, e, h, i, k, r, u, w]
+[4, 3, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1]
+doqsy
+doiqs
+
+         */
         System.out.println("Hi".compareTo("He"));
         sumSector("encrypt.txt");
     }
