@@ -27,15 +27,14 @@ public class adventOfCode1{
     try{
       File file = new File(filename);
       Scanner input = new Scanner(file);
+      //i 
       int i = 0, x = 0, y = 0;
 
       while(input.hasNext()){
         String[] text = input.next().split(",");
         System.out.println(Arrays.toString(text));
         String dir = text[0].substring(0, 1);
-        //System.out.println(dir);
         int blocks = Integer.valueOf(text[0].substring(1));
-        //System.out.println(blocks);
 
         if (i % 2 == 0 && dir.equals("R")){
           System.out.println("This adds " + blocks + " to x");
