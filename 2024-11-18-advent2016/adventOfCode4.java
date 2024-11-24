@@ -21,12 +21,24 @@ public class adventOfCode4{
 
                 ArrayList<String> Letters = new ArrayList<String>();
                 ArrayList<Integer> count = new ArrayList<Integer>();
+                ArrayList<String> dataList = new ArrayList<>();
 
+                for (int i = 0; i < data.length-1; i++){
+                    for (int x = 0; x < data[i].length(); x++){
+                        dataList.add(data[i].substring(x, x + 1));
+                    }
+                }
+                System.out.println(dataList);
+
+                //System.out.println(Arrays.toString(data));
                 //filling in arraylists
                 for(int str = 0; str < data.length - 1; str++){
                     String text = data[str];
                     for(int i = 0; i < text.length(); i++){
-                        String letter = text.substring(i, i + 1);
+                        String letter = text.substring(i, i + 1); //MOD LETTER
+                        //System.out.println(letter);
+                        //letter = decrypt(letter, sectorID);
+                        //System.out.println(letter);
                         int index = Letters.indexOf(letter);
                         if (index == -1){
                             Letters.add(letter);
@@ -38,18 +50,27 @@ public class adventOfCode4{
                         }
                     }
                 }
-                String correctChecksum = "";
+                sort(Letters, count);
+                
 
+                //decrypt(Letters, sectorID);
+                String correctChecksum = "";
                 //get correct checksum
                 for (int i = 0; i < 5; i ++){
                     correctChecksum += Letters.get(i);
                 }
+                System.out.println(correctChecksum);
                 if(checksum.equals(correctChecksum)){
+                    System.out.println(Arrays.toString(data));
+                    System.out.println("B4 DECRYPT: "+Letters);
                     System.out.println("REAL ROOM!" + "\n");
                     sum+= sectorID;
+                    //decrypt(dataList, sectorID);
+                    System.out.println("\npost: "+decrypt(dataList, sectorID));
                 }  
             }
             input.close();
+            
             return sum;
         }catch(FileNotFoundException e){
             System.out.println("File not found");
@@ -89,7 +110,35 @@ public class adventOfCode4{
         return letters;
     }
 
+    public static ArrayList<String> decrypt(ArrayList<String> Letters, int sectorID){
+
+        for (int i = 0; i < Letters.size(); i++){
+            int copySector = sectorID;
+            String letter = Letters.get(i);
+            //System.out.println("current letter: "+ letter);
+            char newChar = letter.charAt(0);
+            //System.out.println("current char: " + newChar);
+            while (copySector > 0){
+                if (newChar == 122){
+                    //System.out.println("this letter has been reset to a: " + letter);
+                    letter = "a";
+                    newChar = letter.charAt(0);
+                }
+                else{
+                    newChar++;
+                    //System.out.println("shift forward 1, newChar = "+newChar);
+                    letter = Character.toString(newChar);
+                    //System.out.println(letter);
+                }
+                copySector--;
+            }
+            Letters.set(i, letter);
+        }
+        //System.out.println(Letters);
+        return Letters;
+    }
+
     public static void main(String[] args) {
-        sumSector("encrypt.txt");
+        System.out.println(sumSector("encrypt.txt"));
     }
 }
