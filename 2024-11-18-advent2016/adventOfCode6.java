@@ -22,15 +22,15 @@ public class adventOfCode6{
             }
 
             for (int row =0; row < counts.length; row++){
-                int greatest = 0;
-                int indexGreatest = 0;
+                int least = counts[row][0];
+                int indexleast = 0;
                 for (int i = 0; i < 26; i++){
-                    if (counts[row][i] > greatest){
-                        greatest = counts[row][i];
-                        indexGreatest = i;
+                    if (counts[row][i] < least){
+                        least = counts[row][i];
+                        indexleast = i;
                     }
                 }
-            String letter = Character.toString((char) (indexGreatest + 97));
+            String letter = Character.toString((char) (indexleast + 97));
             decodedMessage += letter;
             }
             input.close();
@@ -41,9 +41,9 @@ public class adventOfCode6{
         }
     }
     public static void main(String[] args) {
-        decodeMessage("message.txt");
+        System.out.println(decodeMessage("message.txt"));
         String hi = "hello";
         int ascii = (int)hi.charAt(1);
-        System.out.println(ascii);
+        //System.out.println(ascii);
     }
 }
