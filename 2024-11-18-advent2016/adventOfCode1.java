@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -33,8 +34,13 @@ public class adventOfCode1{
         {0, 1},
         {0, -1}
       };
-      int[] loc = coord[2];
-      System.out.println(Arrays.toString(loc));
+      int[] head = coord[2];
+      System.out.println(Arrays.toString(head));
+      ArrayList<int[]> passed = new ArrayList<>();
+      passed.add(new int[]{0, 0});
+      int[] loc = passed.get(passed.size() - 1);
+      //System.out.println(loc);
+      //System.out.println(Arrays.toString(loc[0]));
       
       int x = 0, y = 0;
 
@@ -44,25 +50,77 @@ public class adventOfCode1{
         String dir = text[0].substring(0, 1);
         int blocks = Integer.valueOf(text[0].substring(1));
 
-        if((loc.equals(coord[1]) && dir.equals("R")) || (loc.equals(coord[0]) && dir.equals("L"))){
+        if((head.equals(coord[1]) && dir.equals("R")) || (head.equals(coord[0]) && dir.equals("L"))){
           y -= blocks;
-          loc = coord[3];
+          head = coord[3];
           System.out.println("y: "+y);
+          
+          for(int i = 1; i <= blocks; i++){
+            loc = new int[]{loc[0], loc[1] - 1};
+            System.out.println(Arrays.toString(loc));
+            if (present(loc, passed) == false){
+              passed.add(loc);
+            }
+            else{
+              System.out.println("This is the distance from EASTER Bunny HQ: ");
+              return Math.abs(loc[0]) + Math.abs(loc[1]);
+            }
+          }
+          System.out.println(passed);
         }
-        else if((loc.equals(coord[1]) && dir.equals("L")) || (loc.equals(coord[0]) && dir.equals("R"))){
+        else if((head.equals(coord[1]) && dir.equals("L")) || (head.equals(coord[0]) && dir.equals("R"))){
           y += blocks;
-          loc = coord[2];
+          head = coord[2];
           System.out.println("y: "+y);
+
+          for(int i = 1; i <= blocks; i++){
+            loc = new int[]{loc[0], loc[1] + 1};
+            System.out.println(Arrays.toString(loc));
+            if (present(loc, passed) == false){
+              passed.add(loc);
+            }
+            else{
+              System.out.println("This is the distance from EASTER Bunny HQ: ");
+              return Math.abs(loc[0]) + Math.abs(loc[1]);
+            }
+          }
+          System.out.println(passed);
         }
-        else if((loc.equals(coord[3]) && dir.equals("L")) || (loc.equals(coord[2]) && dir.equals("R"))){
+        else if((head.equals(coord[3]) && dir.equals("L")) || (head.equals(coord[2]) && dir.equals("R"))){
           x += blocks;
-          loc = coord[1];
+          head = coord[1];
           System.out.println("x: "+x);
+
+          for(int i = 1; i <= blocks; i++){
+            loc = new int[]{loc[0] + 1, loc[1]};
+            System.out.println(Arrays.toString(loc));
+            if (present(loc, passed) == false){
+              passed.add(loc);
+            }
+            else{
+              System.out.println("This is the distance from EASTER Bunny HQ: ");
+              return Math.abs(loc[0]) + Math.abs(loc[1]);
+            }
+          }
+          System.out.println(passed);
         }
-        else if((loc.equals(coord[2]) && dir.equals("L")) || (loc.equals(coord[3]) && dir.equals("R"))){
+        else if((head.equals(coord[2]) && dir.equals("L")) || (head.equals(coord[3]) && dir.equals("R"))){
           x -= blocks;
-          loc = coord[0];
+          head = coord[0];
           System.out.println("x: "+x);
+
+          for(int i = 1; i <= blocks; i++){
+            loc = new int[]{loc[0] - 1, loc[1]};
+            System.out.println(Arrays.toString(loc));
+            if (present(loc, passed) == false){
+              passed.add(loc);
+            }
+            else{
+              System.out.println("This is the distance from EASTER Bunny HQ: ");
+              return Math.abs(loc[0]) + Math.abs(loc[1]);
+            }
+          }
+          System.out.println(passed);
         }
 
       }
@@ -75,6 +133,15 @@ public class adventOfCode1{
       System.out.println("File not found");
       return -100;
     }
+  }
+
+  public static boolean present(int[] num, ArrayList<int[]> nums){
+    for (int arr = 0; arr < nums.size(); arr++){
+      if((nums.get(arr))[0] == (num[0]) && (nums.get(arr))[1] == (num[1])){
+        return true;
+      }
+    }
+    return false;
   }
 
   public static void main(String[] args){
