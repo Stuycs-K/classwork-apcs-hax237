@@ -27,8 +27,16 @@ public class adventOfCode1{
     try{
       File file = new File(filename);
       Scanner input = new Scanner(file);
-      //i 
-      int i = 0, x = 0, y = 0;
+      int[][] coord = new int[][] {
+        {-1, 0},
+        {1, 0},
+        {0, 1},
+        {0, -1}
+      };
+      int[] loc = coord[2];
+      System.out.println(Arrays.toString(loc));
+      
+      int x = 0, y = 0;
 
       while(input.hasNext()){
         String[] text = input.next().split(",");
@@ -36,27 +44,28 @@ public class adventOfCode1{
         String dir = text[0].substring(0, 1);
         int blocks = Integer.valueOf(text[0].substring(1));
 
-        if (i % 2 == 0 && dir.equals("R")){
-          System.out.println("This adds " + blocks + " to x");
-          x += blocks;
-        }
-        if (i % 2 == 0 && dir.equals("L")){
-          System.out.println("This subtracts " + blocks + " from x");
-          x -= blocks;
-        }
-        if (i % 2 == 1 && dir.equals("R")){
-          System.out.println("This subtracts " + blocks + " from y");
+        if((loc.equals(coord[1]) && dir.equals("R")) || (loc.equals(coord[0]) && dir.equals("L"))){
           y -= blocks;
+          loc = coord[3];
+          System.out.println("y: "+y);
         }
-        if (i % 2 == 1 && dir.equals("L")){
-          System.out.println("This adds " + blocks + " to y");
+        else if((loc.equals(coord[1]) && dir.equals("L")) || (loc.equals(coord[0]) && dir.equals("R"))){
           y += blocks;
+          loc = coord[2];
+          System.out.println("y: "+y);
         }
-        System.out.println("x: "+x);
-        System.out.println("y: "+ y);
-        i++;
+        else if((loc.equals(coord[3]) && dir.equals("L")) || (loc.equals(coord[2]) && dir.equals("R"))){
+          x += blocks;
+          loc = coord[1];
+          System.out.println("x: "+x);
+        }
+        else if((loc.equals(coord[2]) && dir.equals("L")) || (loc.equals(coord[3]) && dir.equals("R"))){
+          x -= blocks;
+          loc = coord[0];
+          System.out.println("x: "+x);
+        }
+
       }
-      
       input.close();
       System.out.println(x);
       System.out.println(y);
