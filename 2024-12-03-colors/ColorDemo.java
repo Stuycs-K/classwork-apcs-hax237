@@ -60,7 +60,7 @@ public class ColorDemo {
       go(38, 15);
       System.out.print("Progress: " + i + "%");
       try {
-          Thread.sleep(50); 
+          Thread.sleep(50);
       } catch (InterruptedException e) {
           System.err.println("Thread was interrupted: " + e.getMessage());
       }
@@ -78,10 +78,10 @@ public class ColorDemo {
         int column = (int) Math.round(centerY + radius * Math.cos(theta));
 
         go(row, column);
-        System.out.print("\u001b[38;2;" + 150 + ";" + 0 + ";" + 70 + "m."); 
+        System.out.print("\u001b[38;2;" + 150 + ";" + 0 + ";" + 70 + "m.");
 
         try {
-            Thread.sleep(50); 
+            Thread.sleep(50);
         } catch (InterruptedException e) {
             System.err.println("Thread was interrupted: " + e.getMessage());
         }
@@ -89,7 +89,8 @@ public class ColorDemo {
 
     // Reset the cursor color to default
     System.out.print("\u001b[0m");
+    System.out.print(SHOW_CURSOR);
     //return to default
-    //System.out.print(" \u001b[0m ");
+    System.out.print(" \u001b[0m ");
   }
 }
