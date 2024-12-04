@@ -52,11 +52,12 @@ public class ColorDemo {
     System.out.print(HIDE_CURSOR);
     color(RED, BLACK);
     System.out.print("spider");
-    go(3, 5);
+    go(20, 8);
     System.out.print("NOOOOOOO");
 
+    /*
     for (int i = 0; i <= 100; i++) {
-      go(38, 10);
+      go(38, 15);
       System.out.print("Progress: " + i + "%");
       try {
           Thread.sleep(50); 
@@ -64,6 +65,33 @@ public class ColorDemo {
           System.err.println("Thread was interrupted: " + e.getMessage());
       }
     }
+      */
+
+    System.out.println(CLEAR_SCREEN);
+
+    int centerX = 40; // Center row
+    int centerY = 40; // Center column
+    int radius = 20;  // Radius of the circle
+
+    for (double theta = 0; theta < 2 * Math.PI; theta += 0.1) { // Adjust increment for smoothness
+        // Calculate the circle's coordinates
+        int row = (int) Math.round(centerX + radius * Math.sin(theta));
+        int column = (int) Math.round(centerY + radius * Math.cos(theta));
+
+        // Move the cursor and draw a dot
+        go(row, column);
+        System.out.print("\u001b[38;2;" + 150 + ";" + 0 + ";" + 70 + "m."); // Colored dot
+
+        // Pause for animation effect
+        try {
+            Thread.sleep(50); 
+        } catch (InterruptedException e) {
+            System.err.println("Thread was interrupted: " + e.getMessage());
+        }
+    }
+
+    // Reset the cursor color to default
+    System.out.print("\u001b[0m");
     //return to default
     //System.out.print(" \u001b[0m ");
   }
