@@ -73,16 +73,13 @@ public class ColorDemo {
     int centerY = 40; // Center column
     int radius = 20;  // Radius of the circle
 
-    for (double theta = 0; theta < 2 * Math.PI; theta += 0.1) { // Adjust increment for smoothness
-        // Calculate the circle's coordinates
+    for (double theta = 0; theta < 2 * Math.PI; theta += 0.1) {
         int row = (int) Math.round(centerX + radius * Math.sin(theta));
         int column = (int) Math.round(centerY + radius * Math.cos(theta));
 
-        // Move the cursor and draw a dot
         go(row, column);
-        System.out.print("\u001b[38;2;" + 150 + ";" + 0 + ";" + 70 + "m."); // Colored dot
+        System.out.print("\u001b[38;2;" + 150 + ";" + 0 + ";" + 70 + "m."); 
 
-        // Pause for animation effect
         try {
             Thread.sleep(50); 
         } catch (InterruptedException e) {
