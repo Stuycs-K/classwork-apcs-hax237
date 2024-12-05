@@ -18,11 +18,17 @@ public class Driver{
         }
       }
       if (row == 3){
-        for (int c = 1; c < 81; c++){
+        Text.go(3, 1);
+        Text.color(Text.GREEN);
+        System.out.print("*"); 
+        for (int c = 2; c < 80; c++){
           Text.go(row, c);
           Text.color(Text.BLUE);
           System.out.print("!");
         }
+        Text.go(3, 80);
+        Text.color(Text.RED);
+        System.out.print("*"); 
       }
       else{
         Text.go(row, 1);
@@ -70,9 +76,17 @@ public class Driver{
       System.out.print(arr[i]);
     }
 
+    //draw something
+    Text.go(14, 40);
+    System.out.print("X");
+    Text.go(15, 41);
+    System.out.print(")");
+    Text.go(16, 40);
+    System.out.print("X");
+
     Text.go(31, 81);
     System.out.print(Text.RESET);
-    //System.out.print(Text.CLEAR_SCREEN);
+    System.out.print(Text.CLEAR_SCREEN);
     
   }
 
