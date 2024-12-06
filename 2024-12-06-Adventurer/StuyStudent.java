@@ -30,16 +30,23 @@ public class StuyStudent extends Adventurer{
 
   public String attack(Adventurer other){
     int dmgDone = other.applyDamage(21*Math.random());
-    return "*intense studying noises*\n-" + dmgDone + " hp from " + other.getName();
+    return "You've just distracted an adventurer from studying for their APCS exam!\n-" + dmgDone + " hp from " + other.getName();
   }
 
   public String support(Adventurer other){
     int healed = other.setHP(other.getHP() + 16*Math.random());
-    return "You just tutored an ally! " + "+" + healed + "hp for " + other.getName();
+    return "You just tutored an ally!\n+" + healed + "hp for " + other.getName();
   }
 
   public String support(){
-    int healed = other.setHP(other.getHP() + 16*Math.random());
+    int healed = this.setHP(this.getHP() + 16*Math.random());
+    return "*intense studying noises*\nYou've just healed for " + healed + "hp!";
+  }
+
+  public abstract String specialAttack(Adventurer other){
+    int dmgDone = other.applyDamage(40);
+    this.setSpecial(this.getSpecial() - 65);
+    return "You just chugged a celcius/coffee/monster energy! You ran circles around your opponent and sang baby shark off-key.\n-40hp from "+ other.getName() + "!";
   }
 
 }
