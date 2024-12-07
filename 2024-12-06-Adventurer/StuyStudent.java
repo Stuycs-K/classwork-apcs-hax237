@@ -3,7 +3,7 @@ public class StuyStudent extends Adventurer{
   private int caffeineMax;
 
   public StuyStudent(String name){
-    super(name, hp);
+    super(name, 10);
   }
 
   public StuyStudent(String name, int hp){
@@ -19,7 +19,6 @@ public class StuyStudent extends Adventurer{
   }
 
   public void setSpecial(int n){
-    //check if exceeds getSpecialMax????
     this.caffeine = n;
     this.caffeineMax = n;
   }
@@ -29,24 +28,24 @@ public class StuyStudent extends Adventurer{
   }
 
   public String attack(Adventurer other){
-    int dmgDone = other.applyDamage(21*Math.random());
-    return "You've just distracted an adventurer from studying for their APCS exam!\n-" + dmgDone + " hp from " + other.getName();
+    other.applyDamage(10);
+    return "You've just distracted an adventurer from studying for their APCS exam!\n-10hp from " + other.getName();
   }
 
   public String support(Adventurer other){
-    int healed = other.setHP(other.getHP() + 16*Math.random());
-    return "You just tutored an ally!\n+" + healed + "hp for " + other.getName();
+    other.setHP(other.getHP() + 7);
+    return "You just tutored an ally!\n+7hp for " + other.getName();
   }
 
   public String support(){
-    int healed = this.setHP(this.getHP() + 16*Math.random());
-    return "*intense studying noises*\nYou've just healed for " + healed + "hp!";
+    this.setHP(this.getHP() + 10);
+    return "*intense studying noises*\nYou've just healed for +10hp!";
   }
 
-  public abstract String specialAttack(Adventurer other){
-    int dmgDone = other.applyDamage(40);
-    this.setSpecial(this.getSpecial() - 65);
-    return "You just chugged a celcius/coffee/monster energy! You ran circles around your opponent and sang baby shark off-key.\n-40hp from "+ other.getName() + "!";
+  public String specialAttack(Adventurer other){
+    other.applyDamage(30);
+    this.setSpecial(this.getSpecial() - 60);
+    return "You just chugged a celcius/coffee/monster energy! You ran circles around your opponent and sang baby shark off-key.\n-30hp from "+ other.getName() + "!";
   }
 
 }
