@@ -1,5 +1,21 @@
+import java.util.Scanner;
+
 public class Driver{
   public static void main(String[] args) {
+    Adventurer Bob = new StuyStudent("Bob");
+    Adventurer Michael = new CodeWarrior("Michael");
+    //do this once
+    Scanner userInput = new Scanner(System.in);
+
+    //You can do the rest many times:
+
+    System.out.println("Enter username");
+    //Read one line of user input
+    String userName = userInput.nextLine();
+    //Do something with the input
+    System.out.println("Username is: " + userName);
+
+    /*
     Adventurer Michael = new StuyStudent("Michael", 100, 100);
     Adventurer Chester = new StuyStudent("Chester", 100,100);
     Adventurer Cassy = new StuyStudent("Cassy", 100,100);
@@ -31,5 +47,6 @@ public class Driver{
     System.out.println("Cassy now has "+Cassy.getSpecial() + "mgs of caffeine.");
     System.out.println(Michael.support());
     System.out.println(Michael.support());
+  */
   }
 }
