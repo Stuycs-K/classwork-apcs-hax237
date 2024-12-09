@@ -2,13 +2,30 @@ import java.util.Scanner;
 
 public class Driver{
   public static void main(String[] args) {
-    Adventurer Bob = new StuyStudent("Bob");
-    Adventurer Michael = new CodeWarrior("Michael");
+    Adventurer player = new StuyStudent("Bob");
+    Adventurer enemy = new CodeWarrior("Michael");
     //do this once
     Scanner userInput = new Scanner(System.in);
+    System.out.println("Bob, " + player.getHP() +"/" + player.getmaxHP() + " HP, " + player.getSpecial() + "/" + player.getSpecialMax() + "mg caffeine");
+    System.out.println("Michael, " + enemy.getHP() +"/" + enemy.getmaxHP() + " HP, " + enemy.getSpecial() + "/" + enemy.getSpecialMax() + "mg caffeine");
+    System.out.println("Type: (a)ttack / (sp)ecial / (su)pport / quit ");
+    while (userInput.hasNext()){
+      String line = userInput.nextLine();
+      if (line.equals("a") || line.equals("attack")){
+        player.attack(enemy);
+      }
+      else if (line.equals("sp") || l .equals("special")){
+        player.specialAttack(enemy);
+      }
+      else if (line.equals("su") || line.equals("support")){
+        player.support();
+      }
+      else if (line.equals("quit")){
 
+      }
+
+    }
     //You can do the rest many times:
-
     System.out.println("Enter username");
     //Read one line of user input
     String userName = userInput.nextLine();
