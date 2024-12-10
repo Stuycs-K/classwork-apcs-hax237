@@ -50,12 +50,14 @@ public class StuyStudent extends Adventurer{
 
   public String support(Adventurer other){
     other.setHP(other.getHP() + 7);
-    return this+" just tutored an ally!\n+7hp for " + other.getName();
+    other.setSpecial(other.getSpecial() + 2);
+    return this+" just tutored an ally and offered "+ other + " a sip of coffee!\n+7hp and +2mg caffeine for " + other;
   }
 
   public String support(){
-    this.setHP(this.getHP() + 10);
-    return "*intense studying noises*\n" + this + " healed themselves for +10hp!";
+    this.setHP(this.getHP() + 7);
+    this.setSpecial(this.getSpecial()+9);
+    return "*intense studying and chugging noises*\n" + this + " healed themselves for +7hp and regained 9mg caffeine!";
   }
 
   public String specialAttack(Adventurer other){

@@ -3,7 +3,6 @@ public abstract class Adventurer{
   private String name;
   private int HP,maxHP;
 
-
   /*There is no no-arg constructor. Be careful with your subclass constructors.*/
 
   public Adventurer(String name){
