@@ -6,31 +6,58 @@ public class Driver{
     Adventurer enemy = new CodeWarrior("Michael");
     //do this once
     Scanner userInput = new Scanner(System.in);
-    System.out.println("Bob, " + player.getHP() +"/" + player.getmaxHP() + " HP, " + player.getSpecial() + "/" + player.getSpecialMax() + "mg caffeine");
-    System.out.println("Michael, " + enemy.getHP() +"/" + enemy.getmaxHP() + " HP, " + enemy.getSpecial() + "/" + enemy.getSpecialMax() + "mg caffeine");
-    System.out.println("Type: (a)ttack / (sp)ecial / (su)pport / quit ");
-    while (userInput.hasNext()){
-      String line = userInput.nextLine();
-      if (line.equals("a") || line.equals("attack")){
-        player.attack(enemy);
-      }
-      else if (line.equals("sp") || l .equals("special")){
-        player.specialAttack(enemy);
-      }
-      else if (line.equals("su") || line.equals("support")){
-        player.support();
-      }
-      else if (line.equals("quit")){
+    
+    //issues? if not enough special for sp, not given another turn
+    //enemy always generating 0 for choice
 
-      }
-
+    while (true){
+        int choice = (int) Math.random()*3;
+        System.out.println("\nBob, " + player.getHP() +"/" + player.getmaxHP() + " HP, " + player.getSpecial() + "/" + player.getSpecialMax() + "mg caffeine");
+        System.out.println("Michael, " + enemy.getHP() +"/" + enemy.getmaxHP() + " HP, " + enemy.getSpecial() + "/" + enemy.getSpecialMax() + "mg caffeine\n");
+        System.out.println("Type: (a)ttack / (sp)ecial / (su)pport / quit ");
+        String input = userInput.nextLine();
+        if (input.equals("a") || input.equals("attack") || input.equals("sp") || input.equals("special") || input.equals("su") || input.equals("support")){
+          if (input.equals("a") || input.equals("attack")){
+            System.out.println(player.attack(enemy));
+          }
+          else if (input.equals("sp") || input.equals("special")){
+            System.out.println(player.specialAttack(enemy));
+          }
+          else if (input.equals("su") || input.equals("support")){
+            System.out.println(player.support());
+          }
+          if(enemy.getHP() > 0){
+            //int choice = (int) Math.random()*3;
+            System.out.println(choice);
+            if (choice == 0){
+              System.out.println(enemy.attack(player));
+            }
+            else if (choice == 1){
+              System.out.println(enemy.specialAttack(player));
+            }
+            else if (choice == 2){
+              System.out.println(enemy.support());
+            }
+            if (player.getHP() <= 0){
+              System.out.println("\n"+ enemy +" wins");
+              userInput.close();
+              break;
+            }
+          }
+          else{
+            System.out.println("\n!!!Winner winner chicken dinner!!! \nYou've defeated the great "+enemy + " after using your gigabrain. \nTime for some more celebratory coffee!");
+            userInput.close();
+            break;
+          }
+        }
+        else if (input.equals("quit")){
+          userInput.close();
+          break;
+        }
+        else{
+          System.out.println("\n****INVALID RESPONSE****. Please try again.");
+        }
     }
-    //You can do the rest many times:
-    System.out.println("Enter username");
-    //Read one line of user input
-    String userName = userInput.nextLine();
-    //Do something with the input
-    System.out.println("Username is: " + userName);
 
     /*
     Adventurer Michael = new StuyStudent("Michael", 100, 100);
